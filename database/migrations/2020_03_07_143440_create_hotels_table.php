@@ -20,10 +20,10 @@ class CreateHotelsTable extends Migration
             $table->string('phone');
             $table->integer('evaluation')->unsigned();
             $table->integer('address_id')->unsigned();
+            $table->foreign('address_id')->references('id')->on('addresses');
             $table->unsignedBigInteger('created_by');
             $table->unsignedBigInteger('updated_by');
             $table->timestamps();
-            $table->foreign('address_id')->references('address');
         });
     }
 

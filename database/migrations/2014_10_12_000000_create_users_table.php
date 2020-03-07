@@ -17,8 +17,11 @@ class CreateUsersTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('email')->unique();
+            $table->integer('address_id')->unsigned()->nullable();
+            $table->foreign('address_id')->references('id')->on('addresses');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->enum('role',['travel_agent', 'guest', 'hotel_attendant', 'hotel_manager']);
             $table->rememberToken();
             $table->timestamps();
         });
